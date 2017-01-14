@@ -1,0 +1,5 @@
+%h1=@post.title
+%p=@post.content
+<a href="#{posts_path}" class="= btn btn-primary">Revenir aux articles</a> 
+=link_to "Editer", edit_post_path, :class => "btn"
+<a href="#{post_path(@post.id)}" data-method="DELETE" data-confirm="Etes vous sûr de vouloir suppimer cette article ?" class="= btn btn-danger">Suppimer</a> 
