@@ -17,5 +17,4 @@
 .byebug_history
 
 #Ignore database file
-/config/database.yml
 /public/uploader/*
