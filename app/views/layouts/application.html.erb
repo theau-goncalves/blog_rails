@@ -25,11 +25,19 @@
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="<%= posts_path %>">Article</a>
-          <a class="nav-item nav-link" href="#">Pricing</a>
-          <a class="nav-item nav-link disabled" href="#">Disabled</a>
+          <% if user_signed_in? %>
+            <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, :class => "nav-item nav-link" %>
+            <%= link_to 'Mon compte', user_session_path, :class => "nav-item nav-link" %>
+          <% else %>
+            <a class="nav-item nav-link " href="<%= new_user_session_path %>">Se connecter</a>
+          <% end %>
+          
         </div>
       </div>
     </nav>
+   
+    <p class="notice"><%= notice %>
+    <p class="alert"><%= alert %>
 
     <div class="container" style="padding-top : 5rem">
       <%= yield %>
