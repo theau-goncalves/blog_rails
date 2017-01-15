@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.new_form input, textarea{
+    width : 100%;
+}
+
+/*.new_form textarea{
+    height: 200px;
+}*/
+

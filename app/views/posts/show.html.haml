@@ -18,7 +18,7 @@
             %h3 Ajouter un commentaire :
             =form_for @comment = Comment.new, url:[@post,@comment] do |f|
                 =f.text_area :content, :class => "form-control", :placeholder => 'Entrez votre commentaire ici...'
-                =f.submit :class => "btn btn-primary"
+                =f.submit :class => "btn btn-primary", :style => "margin-top : 10px"
 %hr
     - @comm.each do |comm|
         %p=comm.id

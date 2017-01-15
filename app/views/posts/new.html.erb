@@ -1,13 +1,17 @@
 <h1> Ecrire un nouvel article</h1>
 
-<%=form_for @post do |f|%>
-    <div class="form-group">
-        <%= f.label "Titre de l'Article" %><br/>
-        <%= f.text_field :title %>
-    </div>
-    <div class="form-group">
-        <%= f.label "Contenu de l'article"%><br/>
-        <%= f.text_area :content %>
-    </div>
-    <button type="submit" class="btn btn-primary">Poster l'article</button>
-<% end %>
+<div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-6 new_form">
+        <%=form_for @post do |f|%>
+            <div class="form-group">
+                <%= f.label "Titre de l'Article" %><br/>
+                <%= f.text_field :title, :class => "form-control"%>
+            </div>
+            <div class="form-group">
+                <%= f.label "Contenu de l'article"%><br/>
+                <%= f.text_area :content, :class => "form-control"%>
+            </div>
+            <button type="submit" class="btn btn-primary">Poster l'article</button>
+        <% end %>
+    <div>
+<div>
