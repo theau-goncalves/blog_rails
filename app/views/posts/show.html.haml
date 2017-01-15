@@ -15,7 +15,7 @@
 
 %hr
 
-%h2 Commentaire(#{Comment.where(:post_id => @post.id).count})
+%h2 Commentaires (#{Comment.where(:post_id => @post.id).count})
 - @comm.each do |comm|
     %div.card
         %div.card-block
@@ -32,4 +32,4 @@
             %h3 Ajouter un commentaire :
             =form_for @comment = Comment.new, url:[@post,@comment] do |f|
                 =f.text_area :content, :class => "form-control", :placeholder => 'Entrez votre commentaire ici...'
-                =f.submit :class => "btn btn-primary", :style => "margin-top : 10px"
+                =f.submit "Ajouter un commentaire", :class => "btn btn-primary", :style => "margin-top : 10px"
