@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_accessor :login
 
+  has_many :post
+  has_many :commentaires
+
   validates :username, presence: true, uniqueness: {case_sensitive: false}
 
 
