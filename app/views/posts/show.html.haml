@@ -1,17 +1,31 @@
-%h1=@post.title
-%p
-    %span Posté par
-    %span=@user.username 
-    %span le
-    %span=@post.created_at.strftime("%Y-%m-%d")
-    %span à
-    %span=@post.created_at.strftime("%H:%M:%S")
-%p=@post.content
-<a href="#{posts_path}" class="= btn btn-primary">Revenir aux articles</a> 
-=link_to "Editer", edit_post_path, :class => "btn"
-<a href="#{post_path(@post.id)}" data-method="DELETE" data-confirm="Etes vous sûr de vouloir suppimer cette article ?" class="= btn btn-danger">Suppimer</a> 
+%div.card.mb-3
+    /<img class="card-img-top" src="..." alt="Card image cap">
+    %div.card-title.tg-title
+        %h3=@post.title
+        %div.card-block
+            %p.card-text=@post.content
+            %p.card-text 
+                %small.text_muted Posté par #{@user.username } le #{@post.created_at.strftime("%d-%m-%Y")} à #{@post.created_at.strftime("%H:%M")}
+            -if current_user
+                - if @post.user_id == current_user.id
+                    <a href="#{posts_path}" class="= btn btn-primary">Revenir aux articles</a> 
+                    =link_to "Editer", edit_post_path, :class => "btn"
+                    <a href="#{post_path(@post.id)}" data-method="DELETE" data-confirm="Etes vous sûr de vouloir suppimer cette article ?" class="= btn btn-danger">Suppimer</a> 
 
 
+%hr
+
+%h2 Commentaire(#{Comment.where(:post_id => @post.id).count})
+- @comm.each do |comm|
+    %div.card
+        %div.card-block
+            %h5=User.find(comm.user_id).username
+            %p.card-text=comm.content
+            -if current_user
+                - if comm.user_id == current_user.id
+                    =link_to "Supprimer le commentaire", post_comment_path(@comm, :id => comm.id), :data => {:method => "delete", :confirm => "Etes vous sûr de vouloir suppimer ce commentaire ?"}
+            
+                    
 %hr
     - if current_user
         .well
@@ -19,9 +33,3 @@
             =form_for @comment = Comment.new, url:[@post,@comment] do |f|
                 =f.text_area :content, :class => "form-control", :placeholder => 'Entrez votre commentaire ici...'
                 =f.submit :class => "btn btn-primary", :style => "margin-top : 10px"
-%hr
-    - @comm.each do |comm|
-        %p=comm.id
-        %p=comm.content
-
-    
