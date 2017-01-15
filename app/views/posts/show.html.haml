@@ -1,4 +1,9 @@
 %h1=@post.title
+%p
+    %span Posté le
+    %span=@post.created_at.strftime("%Y-%m-%d")
+    %span à
+    %span=@post.created_at.strftime("%H:%M:%S")
 %p=@post.content
 <a href="#{posts_path}" class="= btn btn-primary">Revenir aux articles</a> 
 =link_to "Editer", edit_post_path, :class => "btn"

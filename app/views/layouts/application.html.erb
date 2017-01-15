@@ -16,21 +16,23 @@
     </nav>%>
 
    
-    <nav class="navbar navbar-inverse bg-inverse navbar-fixed-top navbar-toggleable-md">
+    <nav class="navbar navbar-inverse bg-inverse fixed-top navbar-toggleable-md">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="<%= root_path %>">Blog Ruby Goncalves</a>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="<%= posts_path %>">Article</a>
+          <a class="nav-item nav-link active" href="<%= root_path %>">Acceuil <span class="sr-only">(current)</span></a>
           <% if user_signed_in? %>
+            <%= link_to 'Potser un article', new_post_path, :class => "nav-item nav-link" %>
             <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, :class => "nav-item nav-link" %>
-            <%= link_to 'Mon compte', user_session_path, :class => "nav-item nav-link" %>
+            <%= link_to 'Mon compte', edit_user_registration_path, :class => "nav-item nav-link" %>
           <% else %>
-            <a class="nav-item nav-link " href="<%= new_user_session_path %>">Se connecter</a>
+            <%= link_to 'Se connecter', new_user_session_path, :class => "nav-item nav-link" %>
+            <%= link_to 'S\'inscrire', new_user_registration_path, :class => "nav-item nav-link" %>
           <% end %>
+          
           
         </div>
       </div>
@@ -39,7 +41,7 @@
     <p class="notice"><%= notice %>
     <p class="alert"><%= alert %>
 
-    <div class="container" style="padding-top : 5rem">
+    <div class="container" style="padding-top : 2rem">
       <%= yield %>
     </div>
   </body>

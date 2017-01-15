@@ -1,9 +1,0 @@
-%h1 Articles
-
-=link_to "Créer un nouvel article", new_post_path, :class => "btn btn-primary"
-
--@posts.each do |post|
-    %h4=post.title
-    %p=post.content
-    %p
-        <a href="#{post_path(post.id)}" class="= btn btn-primary">Lire la suite</a> 

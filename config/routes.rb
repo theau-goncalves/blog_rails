@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'home/private'
 
-  root to: 'pages#home'
+  root to: 'posts#index'
   get '/salut(/:name)', to: 'pages#salut', as: 'salut'
   resources :posts
   

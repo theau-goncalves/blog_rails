@@ -1,0 +1,16 @@
+<h1 style="margin-bottom: 4%">Articles</h1>
+
+<div class="row">
+    <% @posts.each do |post| %>
+        <div class="card col-sm-12 col-md-6 col-lg-4" style="margin-bottom : 2%">
+                <%#<img class="card-img-top" src="..." alt="Card image cap">%>
+            <div class="card-block">
+                <h4 class="card-title"><%= post.title %></h4>
+                <p class="card-text"><%= post.content %></p>
+                <a href="#{post_path(post.id)}" class="= btn btn-primary">Lire la suite</a> 
+            </div>
+        </div>
+    <% end %>
+</div>
+        
+
