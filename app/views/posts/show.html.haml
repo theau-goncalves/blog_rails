@@ -10,3 +10,13 @@
 <a href="#{posts_path}" class="= btn btn-primary">Revenir aux articles</a> 
 =link_to "Editer", edit_post_path, :class => "btn"
 <a href="#{post_path(@post.id)}" data-method="DELETE" data-confirm="Etes vous sûr de vouloir suppimer cette article ?" class="= btn btn-danger">Suppimer</a> 
+
+
+%hr
+    - if current_user
+        .well
+            %h3 Ajouter un commentaire :
+            =form_for @comment = Comment.new, url:[@post,@comment] do |f|
+                =f.text_area :content, :class => "form-control", :placeholder => 'Entrez votre commentaire ici...'
+                =f.submit :class => "btn btn-primary"
+%hr
